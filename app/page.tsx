@@ -2,12 +2,21 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle2, ImageIcon, Zap, ArrowRight, Star, Users, Building2 } from 'lucide-react'
 import { Navigation } from "@/components/navigation"
 import { motion, HTMLMotionProps } from "framer-motion"
+
+// Replace base64 encoded images with reliable external URLs
+const MENU_IMAGES = {
+  garlicBread: "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=200",
+  mozzarellaSticks: "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=200",
+  spaghetti: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=200&auto=format",
+  salmon: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=200&auto=format"
+};
 
 export default function Home() {
   const MotionDiv = motion.div
@@ -170,18 +179,40 @@ export default function Home() {
                     <div>
                       <h4 className="font-medium text-primary">APPETIZERS</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 dark:bg-gray-700 rounded-md flex-shrink-0"></div>
+                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-md flex-shrink-0 overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+                            <img 
+                              src={MENU_IMAGES.garlicBread}
+                              alt="Garlic Bread"
+                              className="w-full h-full object-cover"
+                              width={64}
+                              height={64}
+                            />
+                          </div>
                           <div>
                             <p className="font-medium text-sm sm:text-base">Garlic Bread</p>
                             <p className="text-xs sm:text-sm text-gray-500">$5.99</p>
+                            <div className="flex items-center mt-1">
+                              <span className="inline-flex items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 mr-1">Vegetarian</span>
+                            </div>
                           </div>
                         </div>
-                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 dark:bg-gray-700 rounded-md flex-shrink-0"></div>
+                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-md flex-shrink-0 overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+                            <img 
+                              src={MENU_IMAGES.mozzarellaSticks}
+                              alt="Mozzarella Sticks"
+                              className="w-full h-full object-cover"
+                              width={64}
+                              height={64}
+                            />
+                          </div>
                           <div>
                             <p className="font-medium text-sm sm:text-base">Mozzarella Sticks</p>
                             <p className="text-xs sm:text-sm text-gray-500">$7.99</p>
+                            <div className="flex items-center mt-1">
+                              <span className="inline-flex items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20 mr-1">Vegetarian</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -189,18 +220,40 @@ export default function Home() {
                     <div>
                       <h4 className="font-medium text-primary">MAIN COURSES</h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
-                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 dark:bg-gray-700 rounded-md flex-shrink-0"></div>
+                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-md flex-shrink-0 overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+                            <img 
+                              src={MENU_IMAGES.spaghetti}
+                              alt="Spaghetti Bolognese"
+                              className="w-full h-full object-cover"
+                              width={64}
+                              height={64}
+                            />
+                          </div>
                           <div>
                             <p className="font-medium text-sm sm:text-base">Spaghetti Bolognese</p>
                             <p className="text-xs sm:text-sm text-gray-500">$14.99</p>
+                            <div className="flex items-center mt-1">
+                              <span className="inline-flex items-center rounded-full bg-blue-50 px-1.5 py-0.5 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-600/20 mr-1">Popular</span>
+                            </div>
                           </div>
                         </div>
-                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 dark:bg-gray-700 rounded-md flex-shrink-0"></div>
+                        <div className="p-2 sm:p-3 border rounded-lg flex items-center space-x-2 sm:space-x-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors group">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-md flex-shrink-0 overflow-hidden shadow-sm group-hover:shadow transition-shadow">
+                            <img 
+                              src={MENU_IMAGES.salmon}
+                              alt="Grilled Salmon"
+                              className="w-full h-full object-cover"
+                              width={64}
+                              height={64}
+                            />
+                          </div>
                           <div>
                             <p className="font-medium text-sm sm:text-base">Grilled Salmon</p>
                             <p className="text-xs sm:text-sm text-gray-500">$18.99</p>
+                            <div className="flex items-center mt-1">
+                              <span className="inline-flex items-center rounded-full bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-700 ring-1 ring-inset ring-yellow-600/20 mr-1">Gluten-Free</span>
+                            </div>
                           </div>
                         </div>
                       </div>
