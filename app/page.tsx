@@ -302,7 +302,7 @@ export default function Home() {
                         JD
                       </div>
                       <div className="ml-3">
-                        <p className="font-medium">John Doe</p>
+                        <p className="font-medium">John Anderson</p>
                         <p className="text-sm text-gray-500">Owner, The Italian Bistro</p>
                       </div>
                     </div>
@@ -328,7 +328,7 @@ export default function Home() {
                         JS
                       </div>
                       <div className="ml-3">
-                        <p className="font-medium">Jane Smith</p>
+                        <p className="font-medium">Jane Chen</p>
                         <p className="text-sm text-gray-500">Manager, Coastal Seafood</p>
                       </div>
                     </div>
@@ -354,7 +354,7 @@ export default function Home() {
                         RJ
                       </div>
                       <div className="ml-3">
-                        <p className="font-medium">Robert Johnson</p>
+                        <p className="font-medium">Robert Ogunde</p>
                         <p className="text-sm text-gray-500">CEO, Urban Eats Group</p>
                       </div>
                     </div>
@@ -372,7 +372,7 @@ export default function Home() {
               <Badge variant="outline" className="mb-4">Pricing</Badge>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Choose Your Plan</h2>
               <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-lg">
-                Start free, upgrade as you grow
+                Start Basically, upgrade as you grow
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -587,7 +587,7 @@ export default function Home() {
           </div>
           <div className="mt-6 pt-6 border-t flex flex-col sm:flex-row justify-between items-center">
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-              © 2023 MenuViz. All rights reserved.
+              © 2025 MenuViz. All rights reserved.
             </p>
             <div className="flex items-center space-x-4 mt-4 sm:mt-0">
               <Link href="#" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
