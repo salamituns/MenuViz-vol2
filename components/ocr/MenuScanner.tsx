@@ -88,7 +88,7 @@ export function MenuScanner({ onScanComplete, onError }: MenuScannerProps) {
         toast({
           title: 'Scan completed with warnings',
           description: validation.warnings.join('\n'),
-          variant: 'warning',
+          variant: 'default',
         })
       }
 

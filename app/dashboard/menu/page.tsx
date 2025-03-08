@@ -30,8 +30,10 @@ interface MenuItem {
 interface Category {
   id: string
   name: string
-  description: string | null
+  description?: string
   order_index: number
+  created_at: string
+  updated_at: string
 }
 
 export default function MenuPage() {
