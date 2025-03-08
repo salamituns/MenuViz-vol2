@@ -52,27 +52,27 @@ export function Navigation() {
       <nav className="ml-auto flex items-center gap-4 sm:gap-6">
         <Link 
           className="text-sm font-medium hover:underline underline-offset-4" 
-          href="#"
+          href="/#features"
         >
           Features
         </Link>
         <Link 
           className="text-sm font-medium hover:underline underline-offset-4" 
-          href="#"
+          href="/#demo"
+        >
+          Demo
+        </Link>
+        <Link 
+          className="text-sm font-medium hover:underline underline-offset-4" 
+          href="/#testimonials"
+        >
+          Testimonials
+        </Link>
+        <Link 
+          className="text-sm font-medium hover:underline underline-offset-4" 
+          href="/#pricing"
         >
           Pricing
-        </Link>
-        <Link 
-          className="text-sm font-medium hover:underline underline-offset-4" 
-          href="#"
-        >
-          About
-        </Link>
-        <Link 
-          className="text-sm font-medium hover:underline underline-offset-4" 
-          href="#"
-        >
-          Contact
         </Link>
         <ThemeToggle />
         {user ? (

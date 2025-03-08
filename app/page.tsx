@@ -74,7 +74,7 @@ export default function Home() {
         </section>
 
         {/* Features Section */}
-        <section className="w-full py-20 bg-white dark:bg-gray-900">
+        <section id="features" className="w-full py-20 bg-white dark:bg-gray-900">
           <div className="container px-4 md:px-6">
             <div className="text-center mb-12">
               <Badge variant="outline" className="mb-4">Features</Badge>
@@ -133,8 +133,181 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Demo Section */}
+        <section id="demo" className="w-full py-20 bg-gray-100 dark:bg-gray-850">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4">Demo</Badge>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">See the Transformation</h2>
+              <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-lg">
+                From plain text to visual delight in seconds
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-4">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                  <h3 className="text-lg font-semibold mb-4">Before: Plain Text Menu</h3>
+                  <div className="font-mono text-sm p-4 bg-gray-100 dark:bg-gray-900 rounded border">
+                    <p>APPETIZERS</p>
+                    <p>Garlic Bread - $5.99</p>
+                    <p>Mozzarella Sticks - $7.99</p>
+                    <p>Chicken Wings - $10.99</p>
+                    <p>MAIN COURSES</p>
+                    <p>Spaghetti Bolognese - $14.99</p>
+                    <p>Grilled Salmon - $18.99</p>
+                    <p>Beef Tenderloin - $24.99</p>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                  <h3 className="text-lg font-semibold mb-4">After: Visual Menu</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-primary">APPETIZERS</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <div className="p-3 border rounded-lg flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                          <div>
+                            <p className="font-medium">Garlic Bread</p>
+                            <p className="text-sm text-gray-500">$5.99</p>
+                          </div>
+                        </div>
+                        <div className="p-3 border rounded-lg flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                          <div>
+                            <p className="font-medium">Mozzarella Sticks</p>
+                            <p className="text-sm text-gray-500">$7.99</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-primary">MAIN COURSES</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                        <div className="p-3 border rounded-lg flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                          <div>
+                            <p className="font-medium">Spaghetti Bolognese</p>
+                            <p className="text-sm text-gray-500">$14.99</p>
+                          </div>
+                        </div>
+                        <div className="p-3 border rounded-lg flex items-center space-x-3">
+                          <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+                          <div>
+                            <p className="font-medium">Grilled Salmon</p>
+                            <p className="text-sm text-gray-500">$18.99</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <Button size="lg">
+                Try It Yourself
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section id="testimonials" className="w-full py-20 bg-white dark:bg-gray-900">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-12">
+              <Badge variant="outline" className="mb-4">Testimonials</Badge>
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What Our Customers Say</h2>
+              <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-lg">
+                Join hundreds of satisfied restaurant owners
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <MotionDiv
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Card className="relative overflow-hidden border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-5 h-5 fill-current text-yellow-500" />
+                      ))}
+                    </div>
+                    <blockquote className="text-gray-700 dark:text-gray-300 mb-6">
+                      "MenuViz transformed our restaurant's ordering experience. Our customers love the visual menus, and we've seen a 20% increase in average order value since implementation."
+                    </blockquote>
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                        JD
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium">John Doe</p>
+                        <p className="text-sm text-gray-500">Owner, The Italian Bistro</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionDiv>
+              <MotionDiv
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Card className="relative overflow-hidden border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-5 h-5 fill-current text-yellow-500" />
+                      ))}
+                    </div>
+                    <blockquote className="text-gray-700 dark:text-gray-300 mb-6">
+                      "The OCR technology is incredibly accurate. We uploaded our entire menu in minutes, and the system recognized everything perfectly. The customer support team is also exceptional."
+                    </blockquote>
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                        JS
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium">Jane Smith</p>
+                        <p className="text-sm text-gray-500">Manager, Coastal Seafood</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionDiv>
+              <MotionDiv
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Card className="relative overflow-hidden border-none shadow-lg h-full">
+                  <CardContent className="pt-6">
+                    <div className="flex items-center mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-5 h-5 fill-current text-yellow-500" />
+                      ))}
+                    </div>
+                    <blockquote className="text-gray-700 dark:text-gray-300 mb-6">
+                      "As a multi-location restaurant chain, MenuViz has simplified our menu management across all branches. The analytics provide valuable insights into customer preferences."
+                    </blockquote>
+                    <div className="flex items-center">
+                      <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
+                        RJ
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium">Robert Johnson</p>
+                        <p className="text-sm text-gray-500">CEO, Urban Eats Group</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionDiv>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
-        <section className="w-full py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="pricing" className="w-full py-20 bg-gray-50 dark:bg-gray-800">
           <div className="container px-4 md:px-6">
             <div className="text-center mb-12">
               <Badge variant="outline" className="mb-4">Pricing</Badge>
@@ -144,23 +317,31 @@ export default function Home() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Starter Plan */}
+              {/* Basic Tier */}
               <Card className="relative overflow-hidden border-none shadow-lg">
                 <CardHeader>
-                  <CardTitle>Starter</CardTitle>
+                  <CardTitle>Basic Tier</CardTitle>
                   <CardDescription>Perfect for small restaurants</CardDescription>
-                  <div className="text-3xl font-bold mt-4">$0</div>
-                  <div className="text-sm text-gray-500">Forever free</div>
+                  <div className="text-3xl font-bold mt-4">$19</div>
+                  <div className="text-sm text-gray-500">per month</div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                      Basic menu visualization
+                      OCR menu text extraction
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                      Up to 50 menu items
+                      Basic image upload (up to 100 items)
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                      Simple category organization
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                      Standard QR code generation
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
@@ -170,27 +351,35 @@ export default function Home() {
                   <Button className="w-full mt-6">Get Started</Button>
                 </CardContent>
               </Card>
-              {/* Pro Plan */}
+              {/* Professional Tier */}
               <Card className="relative overflow-hidden border-none shadow-lg bg-primary text-primary-foreground">
                 <CardHeader>
-                  <CardTitle>Pro</CardTitle>
+                  <CardTitle>Professional Tier</CardTitle>
                   <CardDescription className="text-primary-foreground/90">For growing businesses</CardDescription>
-                  <div className="text-3xl font-bold mt-4">$29</div>
+                  <div className="text-3xl font-bold mt-4">$49</div>
                   <div className="text-sm text-primary-foreground/90">per month</div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
-                      Everything in Starter
+                      Priority OCR processing
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
-                      Unlimited menu items
+                      Advanced image upload (up to 500 items)
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
-                      Advanced analytics
+                      Multi-language support (up to 3 languages)
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      Advanced analytics dashboard
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2" />
+                      POS integration & custom branding
                     </li>
                   </ul>
                   <Button variant="secondary" className="w-full mt-6">
@@ -198,10 +387,10 @@ export default function Home() {
                   </Button>
                 </CardContent>
               </Card>
-              {/* Enterprise Plan */}
+              {/* Enterprise Tier */}
               <Card className="relative overflow-hidden border-none shadow-lg">
                 <CardHeader>
-                  <CardTitle>Enterprise</CardTitle>
+                  <CardTitle>Enterprise Tier</CardTitle>
                   <CardDescription>For restaurant chains</CardDescription>
                   <div className="text-3xl font-bold mt-4">Custom</div>
                   <div className="text-sm text-gray-500">Contact us for pricing</div>
@@ -210,15 +399,23 @@ export default function Home() {
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                      Everything in Pro
+                      Unlimited OCR processing
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                      Custom integrations
+                      Unlimited image upload
                     </li>
                     <li className="flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                      Dedicated support
+                      Multi-location management
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                      Custom AI model training
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                      White-label options
                     </li>
                   </ul>
                   <Button variant="outline" className="w-full mt-6">
@@ -226,6 +423,57 @@ export default function Home() {
                   </Button>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="w-full py-20 bg-primary text-primary-foreground">
+          <div className="container px-4 md:px-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to Transform Your Menu Experience?</h2>
+                <p className="mt-4 text-primary-foreground/90 md:text-lg">
+                  Join thousands of restaurants already using MenuViz to enhance their customer experience and increase sales.
+                </p>
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Button size="lg" variant="secondary">
+                    Get Started Now
+                  </Button>
+                  <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+                    Schedule a Demo
+                  </Button>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary-foreground/20 to-primary-foreground/5 rounded-lg blur"></div>
+                  <div className="relative bg-primary-foreground/10 p-6 rounded-lg border border-primary-foreground/20">
+                    <div className="text-center mb-4">
+                      <Building2 className="w-12 h-12 mx-auto mb-2 text-primary-foreground/90" />
+                      <h3 className="text-xl font-bold">Join Our Community</h3>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex items-center">
+                        <CheckCircle2 className="w-5 h-5 mr-2 text-primary-foreground/90" />
+                        <span>Free onboarding support</span>
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle2 className="w-5 h-5 mr-2 text-primary-foreground/90" />
+                        <span>30-day money-back guarantee</span>
+                      </div>
+                      <div className="flex items-center">
+                        <CheckCircle2 className="w-5 h-5 mr-2 text-primary-foreground/90" />
+                        <span>Access to exclusive resources</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Users className="w-5 h-5 mr-2 text-primary-foreground/90" />
+                        <span>Join 1000+ restaurant owners</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
