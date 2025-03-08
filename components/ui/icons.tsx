@@ -19,6 +19,7 @@ import {
   Trash,
   Copy,
   Utensils,
+  Image,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -44,4 +45,5 @@ export const Icons = {
   list: List,
   trash: Trash,
   copy: Copy,
+  image: Image,
 } as const 

@@ -18,7 +18,7 @@ interface AuthContextType {
   loading: boolean
   preferences: UserPreferences | null
   signIn: (email: string, password: string) => Promise<void>
-  signUp: (email: string, password: string) => Promise<void>
+  signUp: (email: string, password: string, metadata?: Record<string, any>) => Promise<void>
   signOut: () => Promise<void>
   resetPassword: (email: string) => Promise<void>
   updatePreferences: (preferences: Partial<UserPreferences>) => Promise<void>
@@ -62,11 +62,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (email: string, password: string, metadata?: Record<string, any>) => {
     try {
       const { error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          data: {
+            ...metadata,
+          },
+        }
       })
       if (error) throw error
       toast.success('Check your email to confirm your account')
