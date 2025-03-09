@@ -3,5 +3,6 @@
   "/signup/page": "app/signup/page.js",
   "/verify/page": "app/verify/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/menu/page": "app/menu/page.js"
+  "/menu/page": "app/menu/page.js",
+  "/dashboard/menu/page": "app/dashboard/menu/page.js"
 }
