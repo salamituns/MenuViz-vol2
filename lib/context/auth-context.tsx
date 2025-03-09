@@ -94,6 +94,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signUp = async (email: string, password: string, metadata?: Record<string, any>) => {
     try {
+      // Determine the correct redirect URL based on environment
+      const baseUrl = typeof window !== 'undefined' ? 
+        (window.location.origin || 'http://localhost:3000') : 
+        (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000');
+      
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -101,7 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           data: {
             ...metadata,
           },
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard/onboarding`,
+          emailRedirectTo: `${baseUrl}/auth/callback?next=/dashboard/onboarding`,
         }
       })
       if (error) throw error

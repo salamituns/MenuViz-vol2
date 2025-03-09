@@ -6,6 +6,9 @@ export async function GET(request: NextRequest) {
   const code = requestUrl.searchParams.get('code')
   const next = requestUrl.searchParams.get('next') || '/dashboard/onboarding'
   
+  // Get the base URL from environment or request
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || requestUrl.origin
+  
   if (code) {
     const supabase = createRouteHandler()
     
@@ -13,9 +16,9 @@ export async function GET(request: NextRequest) {
     await supabase.auth.exchangeCodeForSession(code)
     
     // Redirect to the verify page with success status
-    return NextResponse.redirect(new URL('/verify?status=success', requestUrl.origin))
+    return NextResponse.redirect(new URL('/verify?status=success', baseUrl))
   }
 
   // If no code is provided, redirect to the home page
-  return NextResponse.redirect(new URL('/', requestUrl.origin))
+  return NextResponse.redirect(new URL('/', baseUrl))
 } 
