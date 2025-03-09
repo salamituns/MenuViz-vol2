@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState } from 'react'
-import { User, AuthError } from '@supabase/supabase-js'
+import { User, AuthError, Provider } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
@@ -17,7 +17,8 @@ interface AuthContextType {
   user: User | null
   loading: boolean
   preferences: UserPreferences | null
-  signIn: (email: string, password: string) => Promise<void>
+  signIn: (email: string, password: string, rememberMe?: boolean) => Promise<void>
+  signInWithProvider: (provider: Provider) => Promise<void>
   signUp: (email: string, password: string, metadata?: Record<string, any>) => Promise<void>
   signOut: () => Promise<void>
   resetPassword: (email: string) => Promise<void>
@@ -47,18 +48,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [supabase, router])
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, password: string, rememberMe = false) => {
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
+      
+      // If remember me is checked, update the session expiry
+      if (rememberMe && !error) {
+        // Set a longer session
+        const { data } = await supabase.auth.getSession()
+        if (data.session?.refresh_token) {
+          await supabase.auth.refreshSession({
+            refresh_token: data.session.refresh_token,
+          })
+        }
+      }
+      
       if (error) throw error
       router.push('/dashboard')
       toast.success('Welcome back!')
     } catch (error) {
       const authError = error as AuthError
       toast.error(authError.message)
+      throw error
+    }
+  }
+
+  const signInWithProvider = async (provider: Provider) => {
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        }
+      })
+      if (error) throw error
+    } catch (error) {
+      const authError = error as AuthError
+      toast.error(authError.message)
+      throw error
     }
   }
 
@@ -71,6 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           data: {
             ...metadata,
           },
+          emailRedirectTo: `${window.location.origin}/verify`,
         }
       })
       if (error) throw error
@@ -78,6 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       const authError = error as AuthError
       toast.error(authError.message)
+      throw error
     }
   }
 
@@ -103,6 +135,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       const authError = error as AuthError
       toast.error(authError.message)
+      throw error
     }
   }
 
@@ -134,6 +167,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         loading,
         preferences: user?.user_metadata as UserPreferences || null,
         signIn,
+        signInWithProvider,
         signUp,
         signOut,
         resetPassword,
