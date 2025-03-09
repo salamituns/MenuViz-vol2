@@ -19,6 +19,13 @@ function VerifyContent() {
   useEffect(() => {
     const verifyUser = async () => {
       try {
+        // Check if we have a status parameter from the auth callback
+        const status = searchParams.get('status')
+        if (status === 'success') {
+          setVerificationStatus('success')
+          return
+        }
+        
         // Get the token from the URL
         const token = searchParams.get('token')
         const type = searchParams.get('type')

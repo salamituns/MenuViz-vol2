@@ -53,31 +53,76 @@ export default function OnboardingPage() {
     try {
       const supabase = createClient()
       
-      // Create restaurant profile in database
-      const { error: profileError } = await supabase
+      // First, check if a restaurant profile already exists for this user
+      const { data: existingRestaurant } = await supabase
         .from('restaurants')
-        .insert({
-          name: profile.name,
-          description: profile.description,
-          address: profile.address,
-          phone: profile.phone,
-          website: profile.website,
-          owner_id: user?.id,
-        })
+        .select('id')
+        .eq('owner_id', user?.id)
+        .single()
       
-      if (profileError) throw profileError
+      let restaurantId = existingRestaurant?.id
+      let logoUrl = null
       
       // Upload logo if provided
       if (profile.logo) {
         const fileExt = profile.logo.name.split('.').pop()
         const fileName = `${user?.id}-logo.${fileExt}`
         
-        const { error: uploadError } = await supabase
+        const { data: uploadData, error: uploadError } = await supabase
           .storage
           .from('restaurant-logos')
-          .upload(fileName, profile.logo)
+          .upload(fileName, profile.logo, {
+            upsert: true,
+            contentType: profile.logo.type
+          })
         
         if (uploadError) throw uploadError
+        
+        // Get the public URL for the uploaded logo
+        const { data: urlData } = await supabase
+          .storage
+          .from('restaurant-logos')
+          .getPublicUrl(fileName)
+        
+        logoUrl = urlData?.publicUrl
+      }
+      
+      // Create the profile JSON object
+      const profileData = {
+        description: profile.description,
+        address: profile.address,
+        phone: profile.phone,
+        website: profile.website,
+        logo_url: logoUrl
+      }
+      
+      // Create or update restaurant profile in database
+      if (restaurantId) {
+        // Update existing restaurant
+        const { error: updateError } = await supabase
+          .from('restaurants')
+          .update({
+            name: profile.name,
+            profile: profileData,
+            owner_id: user?.id
+          })
+          .eq('id', restaurantId)
+        
+        if (updateError) throw updateError
+      } else {
+        // Create new restaurant
+        const { data: newRestaurant, error: createError } = await supabase
+          .from('restaurants')
+          .insert({
+            name: profile.name,
+            profile: profileData,
+            owner_id: user?.id
+          })
+          .select('id')
+          .single()
+        
+        if (createError) throw createError
+        restaurantId = newRestaurant?.id
       }
       
       toast.success('Restaurant profile created successfully!')

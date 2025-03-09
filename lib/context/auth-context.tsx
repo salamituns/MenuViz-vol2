@@ -101,7 +101,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           data: {
             ...metadata,
           },
-          emailRedirectTo: `${window.location.origin}/verify`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard/onboarding`,
         }
       })
       if (error) throw error
