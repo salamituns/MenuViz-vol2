@@ -1,11 +1,7 @@
 {
-  "/auth/callback/route": "app/auth/callback/route.js",
-  "/page": "app/page.js",
-  "/verify/page": "app/verify/page.js",
   "/login/page": "app/login/page.js",
-  "/signup/page": "app/signup/page.js",
+  "/verify/page": "app/verify/page.js",
+  "/page": "app/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/dashboard/onboarding/page": "app/dashboard/onboarding/page.js",
-  "/dashboard/settings/page": "app/dashboard/settings/page.js",
-  "/dashboard/menu/page": "app/dashboard/menu/page.js"
+  "/dashboard/onboarding/page": "app/dashboard/onboarding/page.js"
 }
